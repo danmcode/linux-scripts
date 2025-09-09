@@ -8,13 +8,13 @@ This script automates backups of a MySQL database, stores them on a mounted netw
 - DB credentials, paths, and email settings are loaded using python-dotenv.
 - This keeps secrets out of the code.
 
-##### Backup Process
+### Backup Process
 
 - Creates a local folder (BACKUP_DIR) if it doesn’t exist.
 - Runs mysqldump with optional ignored tables.
 - Stores the dump file with a timestamp.
 
-##### Network Drive Check
+### Network Drive Check
 
 - Verifies that the mount point (NETWORK_DRIVE) exists before copying.
 - If missing, sends an error email instead of failing silently.
@@ -22,7 +22,7 @@ This script automates backups of a MySQL database, stores them on a mounted netw
 - Copies the backup file to the mounted drive.
 - Deletes the local temporary file afterward.
 
-##### Email Notifications
+### Email Notifications
 
 - Sends emails via SMTP (SSL).
 - Supports optional CC recipients with emails_cc parameter.
@@ -50,20 +50,20 @@ username=myuser
 password=mypassword
 ```
 
-###Keep this file secure:
+## Keep this file secure:
 
 ```bash
 chmod 600 cifs-creds.example
 ```
 
-####📦 Installation of Dependencies
+#### 📦 Installation of Dependencies
 
 ```bash
 Install python-dotenv with your package manager:
 sudo apt install python3-dotenv
 ```
 
-#####Or if you prefer a virtual environment:
+##### Or if you prefer a virtual environment:
 
 ```bash
 python3 -m venv venv
@@ -71,7 +71,7 @@ source venv/bin/activate
 pip install python-dotenv
 ```
 
-##⏰ Automating with Cron
+## ⏰ Automating with Cron
 
 To run the backup automatically, use cron:
 
@@ -98,7 +98,7 @@ crontab -l
 tail -f /var/log/db_backup.log
 ```
 
-##✅ Summary
+## ✅ Summary
 
 - Script automates MySQL backups and saves them to a mounted network share.
 - Notifies success/failure via email (with optional CC support).
